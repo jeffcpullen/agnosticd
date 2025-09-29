@@ -1,0 +1,33 @@
+= ocp4_workload_featuregate
+
+Role for enabling or disabling FeatureGates for OCP4. This will prevent the cluster from upgrading and there is no roll-back to an upgradable state. The cluster will automatically roll nodes and services to apply the update which can take several minutes.
+
+== Deploy the Workload (mostly for testing)
+
+* Create a file called `myvars.yml` with following contents (adapt where needed):
++
+----
+cloud_provider: none
+env_type: ocp-workloads
+
+ocp_workloads:
+  - ocp4_workload_featuregate
+
+target_host:
+  ansible_host: bastion.rc4p7.sandbox419.opentlc.com
+  ansible_port: 22
+  ansible_user: lab-user
+  ansible_ssh_private_key_file: ~/.ssh/id_rsa
+
+ACTION: create
+----
+
+* Launch the ocp-workloads config
++
+----
+$ ansible-playbook main.yml -e @myvars.yml
+----
+
+== Delete an environment
+
+There is no way to roll back this change.

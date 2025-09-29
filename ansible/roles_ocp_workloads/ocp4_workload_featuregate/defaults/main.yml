@@ -1,0 +1,9 @@
+---
+
+ocp4_workload_featuregate_enabled: []
+  # - ProcMountType
+  # - UserNamespacesSupport
+  # - UserNamespacesPodSecurityStandards
+
+ocp4_workload_featuregate_disabled: []
+  # - ProcMountType
